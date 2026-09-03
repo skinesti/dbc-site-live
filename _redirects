@@ -1,0 +1,2 @@
+/resources/*  https://dbc-resources.netlify.app/resources/:splat  200
+/images/uploads/*  https://dbc-resources.netlify.app/images/uploads/:splat  200
