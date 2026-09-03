@@ -24,6 +24,13 @@
   --sans:  "Jost", "Helvetica Neue", Arial, sans-serif;
 
   --maxw: 1120px;
+
+  /* Header sizing. --header-height is derived from its parts so the mobile
+     menu panel (inset from the top by --header-height) can never drift out
+     of sync with the header the way it did when this was a hard-coded 64px. */
+  --logo-height: 84px;   /* max rendered height of the header logo image */
+  --nav-pad-y: 20px;     /* vertical padding inside .nav */
+  --header-height: calc(var(--logo-height) + 2 * var(--nav-pad-y) + 1px); /* + 1px bottom border */
 }
 
 *{box-sizing:border-box;}
@@ -84,6 +91,7 @@ p{margin:0 0 1em;color:var(--ink-soft);}
 /* ---------- header ---------- */
 header{
   position:sticky;top:0;z-index:50;
+  min-height:var(--header-height);
   background:#f6faf9;
   border-bottom:1px solid transparent;
   transition:border-color .3s ease;
@@ -91,25 +99,32 @@ header{
 header.scrolled{border-color:var(--line);}
 .nav{
   display:flex;align-items:center;justify-content:space-between;
-  padding:20px 32px;max-width:var(--maxw);margin:0 auto;
+  padding:var(--nav-pad-y) 32px;max-width:var(--maxw);margin:0 auto;
 }
 .logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--teal-deep);}
 .logo span{color:var(--clay);}
-.logo-img{height:84px;width:auto;display:block;}
+.logo-img{height:auto;width:auto;max-height:var(--logo-height);max-width:100%;display:block;}
 .navlinks{display:flex;gap:36px;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;}
 .navlinks a{color:var(--ink-soft);border-bottom:1px solid transparent;padding-bottom:4px;transition:.25s;}
 .navlinks a:hover{color:var(--teal);border-color:var(--clay);}
-.navtoggle{display:none;background:none;border:0;font-size:1.6rem;color:var(--teal-deep);cursor:pointer;}
+.navtoggle{
+  display:none;
+  align-items:center;justify-content:center;
+  width:44px;height:44px;padding:0;
+  background:none;border:0;
+  font-size:1.6rem;line-height:1;
+  color:var(--teal-deep);cursor:pointer;
+}
 
 @media(max-width:760px){
   .navlinks{
-    position:fixed;inset:64px 0 0 0;background:var(--bg);
+    position:fixed;inset:var(--header-height) 0 0 0;background:var(--bg);
     flex-direction:column;align-items:flex-start;padding:32px;
     gap:24px;font-size:1rem;
     transform:translateY(-110%);transition:transform .3s ease;
   }
   .navlinks.open{transform:translateY(0);}
-  .navtoggle{display:block;}
+  .navtoggle{display:flex;}
 }
 
 /* ---------- ripple seam — signature divider ---------- */
