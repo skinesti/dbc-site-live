@@ -118,7 +118,8 @@ header.scrolled{border-color:var(--line);}
 
 @media(max-width:760px){
   .navlinks{
-    position:fixed;inset:var(--header-height) 0 0 0;background:var(--bg);
+    position:fixed;top:var(--header-height);right:0;bottom:0;left:0;
+    z-index:100;background:var(--bg);
     flex-direction:column;align-items:flex-start;padding:32px;
     gap:24px;font-size:1rem;
     transform:translateY(-110%);transition:transform .3s ease;
@@ -235,6 +236,10 @@ footer small{color:#9fb6b2;font-size:.92rem;}
 footer .footlinks{display:flex;gap:24px;font-size:.95rem;}
 footer .footlinks a{color:#cfe0dd;}
 footer .footlinks a:hover{color:#fff;}
+@media(max-width:760px){
+  footer .footlinks{flex-wrap:wrap;justify-content:center;text-align:center;gap:12px 20px;}
+  footer .footlinks a{flex:none;}
+}
 
 /* ---------- portfolio page specifics ---------- */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:50px 0;}
