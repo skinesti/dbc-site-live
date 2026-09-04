@@ -169,6 +169,9 @@ header.scrolled{border-color:var(--line);}
 }
 @media(max-width:900px){.hero-photo{display:none;}}
 
+/* ---------- sub-page intro band (separates header from content on pages with no hero image) ---------- */
+.page-intro{background:linear-gradient(to bottom, #FFFFFF, var(--bg));position:relative;padding:0;}
+
 /* ---------- shop / cards ---------- */
 section{padding:90px 0;background:var(--surface);}
 section.alt{background:var(--bg);}
