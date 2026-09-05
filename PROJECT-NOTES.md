@@ -24,11 +24,19 @@ claude
 
 That starts Claude Code in this folder, where it will automatically pick up `CLAUDE.md` for context.
 
-## Where the navigation lives, and why it's duplicated
+## Where the navigation and footer live
 
-Each of the three HTML pages has its own copy of the navigation menu (the `navlinks` block near the top of the file, inside the `<header>`). There's no shared template system, so the same menu markup is pasted into all three files separately.
+Each of the three HTML pages has its own copy of the top navigation menu and the footer. There's no template system, so the same markup exists in all three files. In the past this drifted out of sync — a link would get updated on the homepage but not on the pricing page, and the pages ended up with different menus.
 
-This means: any time the nav changes — adding a link, reordering links, renaming something — it has to be changed in all three files by hand (or by asking Claude to do it), or the pages will show different menus.
+**How it works now:** `index.html` is the "master" copy. A small helper (`tools/sync-partials.py`) copies the header and footer from `index.html` into `portfolio.html` and `pricing.html` so all three always match. If you look inside those two files you'll see a line that says `AUTO-SYNCED FROM index.html — edit there, not here`. That's the reminder: **only change the menu or footer in `index.html`.** A change made directly in the other two files will just get overwritten the next time the helper runs.
+
+**One-time setup on each computer you edit from:** open a terminal in this project folder and run this line once:
+
+```
+git config core.hooksPath .githooks
+```
+
+**Why this matters:** that command switches on an automatic safety check. From then on, every time a change is saved into the project's history, the computer re-copies the header and footer from `index.html` and stops you if the other two pages weren't updated to match. It's what keeps the menus from silently drifting apart across pages again. You only need to run it once per computer — it doesn't travel with the project automatically, so if you ever set the project up on a new machine, run it again there. (Claude Code will also run the helper as part of its normal work.)
 
 ## How deploys work
 

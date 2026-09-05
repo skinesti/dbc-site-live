@@ -1,0 +1,43 @@
+#!/bin/sh
+#
+# pre-commit — keep the shared nav/footer in sync before every commit.
+#
+# Runs tools/sync-partials.py, which copies the header and footer regions from
+# index.html (the source of truth) into portfolio.html and pricing.html. If
+# that produces changes to those files that are not staged in this commit, the
+# commit is stopped so you can review and stage them.
+#
+# Enable once per clone:   git config core.hooksPath .githooks
+# Bypass in an emergency:   git commit --no-verify
+
+set -e
+
+repo_root=$(git rev-parse --show-toplevel)
+
+if ! command -v python3 >/dev/null 2>&1; then
+	echo "pre-commit: python3 not found, cannot run the nav/footer sync." >&2
+	echo "Install Python 3, or bypass once with: git commit --no-verify" >&2
+	exit 1
+fi
+
+python3 "$repo_root/tools/sync-partials.py"
+
+# Did the sync leave changes in portfolio.html / pricing.html that are not
+# staged for this commit?
+unstaged=$(git diff --name-only -- portfolio.html pricing.html)
+
+if [ -n "$unstaged" ]; then
+	echo "" >&2
+	echo "pre-commit: the nav/footer sync updated file(s) not included in this commit:" >&2
+	echo "$unstaged" | sed 's/^/  - /' >&2
+	echo "" >&2
+	echo "index.html is the source of truth for the header and footer." >&2
+	echo "Review the changes above, then stage them and commit again:" >&2
+	echo "" >&2
+	echo "  git add portfolio.html pricing.html" >&2
+	echo "  git commit" >&2
+	echo "" >&2
+	exit 1
+fi
+
+exit 0
