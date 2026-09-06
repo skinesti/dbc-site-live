@@ -8,3 +8,11 @@
 
 [build.environment]
   NODE_VERSION = "20"
+
+# Netlify's "Pretty URLs" post-processing rewrites deployed HTML after the
+# Eleventy build — stripping `.html` from internal links and re-quoting the
+# affected <a> tags. That made the deployed markup (and /partials/site-chrome.html,
+# which dbc-resources fetches) diverge from the committed templates. Turn it off
+# so the templates are authoritative and links stay as authored (/pricing.html).
+[build.processing.html]
+  pretty_urls = false
