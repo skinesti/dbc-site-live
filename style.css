@@ -20,6 +20,8 @@
   --gold:      #C9A961;   /* sparing highlight only */
   --line:      #DCE6E3;
 
+  --radius:    4px;        /* corner radius — buttons/CTAs only */
+
   --serif: "Playfair Display", Georgia, serif;
   --sans:  "Work Sans", "Helvetica Neue", Arial, sans-serif;
   --script: "Petit Formal Script", "Snell Roundhand", "Brush Script MT", cursive;
@@ -73,13 +75,13 @@ p{margin:0 0 1em;color:var(--ink-soft);}
   align-items:center;
   gap:.5em;
   padding:14px 30px;
-  border-radius:2px;
   font-family:var(--sans);
   font-size:.85rem;
   letter-spacing:.1em;
   text-transform:uppercase;
   font-weight:500;
   border:1px solid var(--teal);
+  border-radius:var(--radius);
   transition:all .25s ease;
 }
 .btn-primary{background:var(--teal);color:#fff;}
@@ -197,16 +199,21 @@ section.alt{background:var(--bg);}
 }
 
 /* ---------- brand edit / offer ---------- */
-.offer{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:start;}
-@media(max-width:860px){.offer{grid-template-columns:1fr;gap:36px;}}
-.offer-list{list-style:none;margin:0;padding:0;}
-.offer-list li{
-  display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--line);
+.offer-grid{
+  list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--line);border:1px solid var(--line);
 }
-.offer-list li:first-child{padding-top:0;}
-.offer-num{font-family:var(--serif);color:var(--clay-soft);font-size:1.6rem;line-height:1;min-width:34px;}
-.offer-list h4{margin:0 0 4px;font-size:1.05rem;font-family:var(--sans);font-weight:600;color:var(--teal-deep);}
-.offer-list p{margin:0;font-size:.95rem;}
+@media(max-width:760px){.offer-grid{grid-template-columns:1fr;}}
+.offer-grid li{
+  display:flex;gap:14px;padding:28px 30px;background:var(--surface);
+}
+.offer-dot{
+  flex-shrink:0;width:6px;height:6px;margin-top:.5em;
+  background:var(--clay);border-radius:50%;
+}
+.offer-grid h4{margin:0 0 4px;font-size:1.05rem;font-family:var(--sans);font-weight:600;color:var(--teal-deep);}
+.offer-grid p{margin:0;font-size:.95rem;}
 
 /* ---------- about ---------- */
 .about{max-width:680px;}
