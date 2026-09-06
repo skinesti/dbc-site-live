@@ -1,12 +1,12 @@
 {
   "hero": {
-    "leadin_style": "None",
-    "leadin_text": "",
+    "leadin_style": "Editorial",
+    "leadin_text": "Creative Developer",
     "heading": "Design by Cristina",
     "body": "Beautifully designed software and digital experiences for service-based businesses.",
     "button_text": "Shop Online",
     "button_url": "/#solutions",
-    "button_style": "Primary"
+    "button_style": "Tertiary"
   },
   "app": {
     "leadin_style": "Editorial",
@@ -27,7 +27,7 @@
     "button_style": "Primary"
   },
   "services": {
-    "leadin_style": "Eyebrow",
+    "leadin_style": "None",
     "leadin_text": "The Brand Edit",
     "heading": "How I approach a brand",
     "body": "Eighteen years of building thoughtful, functional digital experiences for businesses that care about how they show up. If you're curious how a project might look, here's what's involved.",
