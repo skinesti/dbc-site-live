@@ -2,14 +2,17 @@
   "name": "dbc-site-live",
   "version": "1.0.0",
   "private": true,
-  "description": "Design by Cristina — marketing site, built with Eleventy",
+  "description": "Design by Cristina — marketing site, built with Eleventy + Decap CMS",
   "scripts": {
     "dev": "eleventy --serve",
     "build": "eleventy",
     "build:check": "eleventy --dryrun --quiet",
-    "clean": "rm -rf _site"
+    "clean": "rm -rf _site",
+    "cms": "decap-server"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0"
+    "@11ty/eleventy": "^3.0.0",
+    "decap-server": "^3.0.0",
+    "markdown-it": "^14.0.0"
   }
 }

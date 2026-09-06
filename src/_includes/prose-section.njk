@@ -1,0 +1,35 @@
+{#-
+  prose(s, level, bodyClass, headingClass)
+
+  Renders one CMS-managed prose block: lead-in -> heading -> body -> optional button.
+  The section wrapper (<section>, id, .wrap, background classes, seams) and any
+  hardcoded siblings (cards, lists, images, forms) stay in the page template.
+
+    s            section object from src/_data/content/<page>.json
+    level        "h1" | "h2"        (default "h2")
+    bodyClass    class put on every body <p>, e.g. "lede" / "lede-app"
+                 ("" -> plain <p>, block markdown, multi-paragraph OK)
+    headingClass class on the heading element, e.g. "h1-compact"
+
+  Lead-in styles:
+    None      -> nothing rendered
+    Eyebrow   -> <p class="eyebrow">      (script font, accent colour)
+    Editorial -> <p class="leadin-editorial">  (Playfair italic, accent colour)
+
+  Button renders only when button_text is set. button_style -> .btn-primary /
+  .btn-secondary. .btn-ghost is a style alias of secondary.
+-#}
+{%- macro prose(s, level="h2", bodyClass="", headingClass="") -%}
+{%- if s.leadin_style == "Eyebrow" and s.leadin_text %}
+      <p class="eyebrow">{{ s.leadin_text }}</p>
+{%- elif s.leadin_style == "Editorial" and s.leadin_text %}
+      <p class="leadin-editorial">{{ s.leadin_text }}</p>
+{%- endif %}
+      <{{ level }}{% if headingClass %} class="{{ headingClass }}"{% endif %}>{{ s.heading }}</{{ level }}>
+{%- if s.body %}
+{{ s.body | mdp(bodyClass) | safe | indent(6, true) }}
+{%- endif %}
+{%- if s.button_text %}
+      <a href="{{ s.button_url }}" class="btn btn-{{ s.button_style | default('Primary') | lower }}">{{ s.button_text }}</a>
+{%- endif %}
+{%- endmacro -%}

@@ -1,15 +1,15 @@
 ---
 layout: base.njk
 permalink: "/portfolio.html"
+canonical: "/portfolio.html"
 title: "Portfolio | Design by Cristina"
 description: "Featured web design and brand work by Cristina Koleszar, creative developer and licensed esthetician."
 ---
+{% from "prose-section.njk" import prose %}
+{% set c = copy.portfolio %}
 <section class="hero" style="padding:120px 0 60px;">
   <div class="wrap">
-    <p class="eyebrow">Featured Work</p>
-    <h1 style="font-size:clamp(2.2rem,4vw,3.2rem);">Creative Developer</h1>
-    <p class="lede">I specialize in turning strategic frameworks into functional digital assets, bringing concepts to life through thoughtful construction, technical setup, and operational coordination, so initiatives are executed smoothly from start to finish.</p>
-    <p class="lede">With over 18 years of experience in web development, web design, and graphic design, I create digital experiences that balance structure, usability, and visual clarity. I believe in the power of simplicity and the impact of thoughtful design.</p>
+    {{ prose(c.hero, level="h1", bodyClass="lede", headingClass="h1-compact") }}
   </div>
 </section>
 <svg class="seam" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0,30 C300,70 900,-10 1200,30 L1200,60 L0,60 Z"/></svg>
@@ -18,8 +18,7 @@ description: "Featured web design and brand work by Cristina Koleszar, creative 
 <section>
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">Spa &amp; Wellness Work</p>
-      <h2>Two brands, and a flagship product of my own</h2>
+      {{ prose(c.cases) }}
     </div>
 
     <div class="case">
@@ -60,9 +59,7 @@ description: "Featured web design and brand work by Cristina Koleszar, creative 
 <section class="alt">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">Prior Clients</p>
-      <h2>A selection of work over the years</h2>
-      <p>Projects range from full Web site builds to ongoing updates and refinements, reflecting the breadth of industries supported over more than two decades in web design. Visuals and functionality may have changed since involvement, and some projects are no longer active.</p>
+      {{ prose(c.clients) }}
     </div>
     <div class="clientlist">
       <span>AllMySons.com</span>
@@ -106,8 +103,6 @@ description: "Featured web design and brand work by Cristina Koleszar, creative 
 
 <section>
   <div class="wrap" style="text-align:center;max-width:600px;">
-    <h2>Like what you see?</h2>
-    <p>Every project on this page started as a conversation about what someone was trying to build. If you've got a Web site, a piece of software, or a digital problem you're working through, tell me about it. I'll help you figure out what actually makes sense, and whether I'm the right person to build it.</p>
-    <a href="/#contact" class="btn btn-primary">Let's talk about your project &rarr;</a>
+    {{ prose(c.closing) }}
   </div>
 </section>

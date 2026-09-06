@@ -1,0 +1,56 @@
+{
+  "hero": {
+    "leadin_style": "None",
+    "leadin_text": "",
+    "heading": "Design by Cristina",
+    "body": "Beautifully designed software and digital experiences for service-based businesses.",
+    "button_text": "Shop Online",
+    "button_url": "/#solutions",
+    "button_style": "Primary"
+  },
+  "app": {
+    "leadin_style": "Editorial",
+    "leadin_text": "Introducing Clarafide",
+    "heading": "Say goodbye to paper intake forms",
+    "body": "",
+    "button_text": "Live Demo",
+    "button_url": "https://demo.designbycristina.com",
+    "button_style": "Primary"
+  },
+  "solutions": {
+    "leadin_style": "None",
+    "leadin_text": "",
+    "heading": "Tools built for how you actually work",
+    "body": "Browse, purchase, and download in one place.",
+    "button_text": "",
+    "button_url": "",
+    "button_style": "Primary"
+  },
+  "services": {
+    "leadin_style": "Eyebrow",
+    "leadin_text": "The Brand Edit",
+    "heading": "How I approach a brand",
+    "body": "Eighteen years of building thoughtful, functional digital experiences for businesses that care about how they show up. If you're curious how a project might look, here's what's involved.",
+    "button_text": "Solutions & Investment",
+    "button_url": "/pricing.html",
+    "button_style": "Secondary"
+  },
+  "about": {
+    "leadin_style": "Eyebrow",
+    "leadin_text": "A Little About Cristina",
+    "heading": "Intentional design, built with purpose",
+    "body": "For more than eighteen years, I've been creating thoughtful, functional digital experiences for people and businesses with ideas worth bringing to life. My work spans a range of industries, with particular insight into aesthetics, wellness, and service-based businesses. I'm open to projects of all kinds. If you're curious what working together could look like, here's what's involved.\n\nBecoming a licensed esthetician and owning my own aesthetics spa gave me an inside view of what small business owners need to show up well online, insight that reaches far beyond one industry. That perspective shapes how I think, but design and strategy still come first. I'm the same person who has spent nearly two decades figuring out how to make a brand feel clear, calm, and completely like itself.",
+    "button_text": "Read Cristina's Full Story →",
+    "button_url": "/portfolio.html",
+    "button_style": "Secondary"
+  },
+  "contact": {
+    "leadin_style": "None",
+    "leadin_text": "",
+    "heading": "Say hello",
+    "body": "Questions about a product, a brand project, or just want to connect, send a note and I'll get back to you.",
+    "button_text": "",
+    "button_url": "",
+    "button_style": "Primary"
+  }
+}

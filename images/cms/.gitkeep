@@ -1,0 +1,2 @@
+# Decap CMS media upload target (config.yml: media_folder). Kept so the
+# folder exists for local decap-server (its getMedia 500s on a missing dir).

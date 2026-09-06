@@ -1,18 +1,21 @@
 ---
 layout: base.njk
 permalink: "/index.html"
+canonical: "/"
 title: "Design by Cristina | Software & Digital Experiences for Service-Based Businesses"
 description: "Design by Cristina: Beautifully designed software and digital experiences for service-based businesses, built with deep roots in aesthetics and wellness by a creative developer with 18+ years of experience."
 ---
+{% from "prose-section.njk" import prose %}
+{% set c = copy.index %}
 <!-- ============ HERO / INTRODUCTION ============ -->
 <section class="hero" style="padding-top:140px;">
   <div class="hero-photo"><img src="images/hero-portrait.jpg" alt="Woman working calmly on a laptop, hands typing"></div>
   <div class="wrap">
     <p class="eyebrow eyebrow-plain">Creative Developer</p>
-    <h1>Design by Cristina</h1>
-    <p class="lede" style="margin-bottom:.3em;">Beautifully designed software and digital experiences for service-based businesses.</p>
+    <h1>{{ c.hero.heading }}</h1>
+    <p class="lede" style="margin-bottom:.3em;">{{ c.hero.body }}</p>
     <p class="lede" style="font-size:.95rem;color:var(--ink-soft);opacity:.85;font-family:var(--serif);font-style:italic;">Built with deep roots in aesthetics and wellness.</p>
-    <a href="/#solutions" class="btn btn-primary">Shop Online</a>
+    <a href="{{ c.hero.button_url }}" class="btn btn-{{ c.hero.button_style | lower }}">{{ c.hero.button_text }}</a>
   </div>
 </section>
 <svg class="seam seam-dark" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0,30 C300,70 900,-10 1200,30 L1200,60 L0,60 Z"/></svg>
@@ -21,10 +24,10 @@ description: "Design by Cristina: Beautifully designed software and digital expe
 <section id="app">
   <div class="wrap app-grid">
     <div>
-      <p class="eyebrow" style="margin-bottom:.6em;">Introducing Clarafide</p>
-      <h2>Say goodbye to paper intake forms</h2>
+      <p class="leadin-editorial" style="margin-bottom:.6em;">{{ c.app.leadin_text }}</p>
+      <h2>{{ c.app.heading }}</h2>
       <p class="lede-app"><span style="font-family:var(--serif);font-style:italic;color:#C2876F;">Clarafide</span> is a branded digital intake system made for wellness practices. Your clients complete their medical history, skin history, consent, and consultation forms from their phone before they ever sit in your chair.</p>
-      <a href="https://demo.designbycristina.com" class="btn btn-primary" target="_blank" rel="noopener">Live Demo</a>
+      <a href="{{ c.app.button_url }}" class="btn btn-{{ c.app.button_style | lower }}" target="_blank" rel="noopener">{{ c.app.button_text }}</a>
       <ul class="feature-row">
         <li>Branded with your logo and colors</li>
         <li>No login, no app download</li>
@@ -44,8 +47,7 @@ description: "Design by Cristina: Beautifully designed software and digital expe
 <section id="solutions" class="alt">
   <div class="wrap">
     <div class="section-head">
-      <h2>Tools built for how you actually work</h2>
-      <p>Browse, purchase, and download in one place.</p>
+      {{ prose(c.solutions) }}
     </div>
     <div class="cards">
       <div class="card">
@@ -80,10 +82,7 @@ description: "Design by Cristina: Beautifully designed software and digital expe
   <div class="wrap">
     <div class="offer">
       <div>
-        <p class="eyebrow">The Brand Edit</p>
-        <h2>How I approach a brand</h2>
-        <p>Eighteen years of building thoughtful, functional digital experiences for businesses that care about how they show up. If you're curious how a project might look, here's what's involved.</p>
-        <a href="/pricing.html" class="btn btn-ghost">Solutions &amp; Investment</a>
+        {{ prose(c.services) }}
       </div>
       <ul class="offer-list">
         <li><span class="offer-dot" aria-hidden="true"></span><div><h4>Crafting Your Brand</h4><p>Defining a unique identity, consistent messaging, and a compelling visual presence.</p></div></li>
@@ -99,11 +98,7 @@ description: "Design by Cristina: Beautifully designed software and digital expe
 <!-- ============ SECTION 4: A LITTLE ABOUT CRISTINA ============ -->
 <section id="about" class="alt">
   <div class="wrap about">
-    <p class="eyebrow">A Little About Cristina</p>
-    <h2>Intentional design, built with purpose</h2>
-    <p>For more than eighteen years, I've been creating thoughtful, functional digital experiences for people and businesses with ideas worth bringing to life. My work spans a range of industries, with particular insight into aesthetics, wellness, and service-based businesses. I'm open to projects of all kinds. If you're curious what working together could look like, here's what's involved.</p>
-    <p>Becoming a licensed esthetician and owning my own aesthetics spa gave me an inside view of what small business owners need to show up well online, insight that reaches far beyond one industry. That perspective shapes how I think, but design and strategy still come first. I'm the same person who has spent nearly two decades figuring out how to make a brand feel clear, calm, and completely like itself.</p>
-    <a href="/portfolio.html" class="btn btn-ghost">Read Cristina's Full Story &rarr;</a>
+    {{ prose(c.about) }}
   </div>
 </section>
 <svg class="seam" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0,30 C300,70 900,-10 1200,30 L1200,60 L0,60 Z"/></svg>
@@ -113,8 +108,7 @@ description: "Design by Cristina: Beautifully designed software and digital expe
   <div class="wrap">
     <div class="contact-grid">
       <div>
-        <h2>Say hello</h2>
-        <p>Questions about a product, a brand project, or just want to connect, send a note and I'll get back to you.</p>
+        {{ prose(c.contact) }}
       </div>
       <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="contact">

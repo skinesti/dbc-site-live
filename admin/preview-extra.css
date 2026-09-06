@@ -1,0 +1,14 @@
+/* Preview-iframe-only: give the composed sections some page context and label
+   each block so it's clear which section is which. Not shipped to the site. */
+body { background: var(--bg); }
+.cms-preview section { padding: 40px 0; border-bottom: 1px solid var(--line); }
+.cms-preview section:last-child { border-bottom: 0; }
+.cms-preview .wrap { padding: 0 24px; }
+.preview-tag {
+  font-family: var(--sans);
+  font-size: .7rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin: 0 0 1em;
+}

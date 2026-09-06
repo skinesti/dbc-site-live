@@ -1,7 +1,11 @@
 /* =========================================================
    Design by Cristina — design tokens
    Palette: calm spa-water + warm clay (skincare nod)
-   Type: Playfair Display (display) + Work Sans (body/UI) + Marck Script (eyebrow labels)
+   Type: Playfair Display (headings, locked) + a body font + a script eyebrow font.
+   Body font, eyebrow font, text size, accent colour and button radius are
+   CMS-selectable — src/_data/design.json, injected as :root overrides by
+   src/_includes/design-vars.njk. The values below are the defaults / the
+   complete stylesheet for anything consuming style.css raw (dbc-resources).
    Signature: soft ripple-seam divider between sections,
    echoing "two worlds blended" — water/skin, design/esthetics
    ========================================================= */
@@ -20,7 +24,10 @@
   --gold:      #C9A961;   /* sparing highlight only */
   --line:      #DCE6E3;
 
-  --radius:    6px;        /* corner radius — buttons/CTAs only */
+  --radius:    6px;        /* corner radius — buttons/CTAs only (CMS: 4/6/8px) */
+
+  --accent:    #C2876F;    /* accent — lead-in labels, dots, small marks (CMS: Clay/Teal Deep/Sage) */
+  --font-base: 17px;       /* body text scale (CMS: Small 16 / Medium 17 / Large 19) */
 
   --serif: "Playfair Display", Georgia, serif;
   --sans:  "Work Sans", "Helvetica Neue", Arial, sans-serif;
@@ -43,7 +50,7 @@ body{
   background:var(--bg);
   color:var(--ink);
   font-family:var(--sans);
-  font-size:17px;
+  font-size:var(--font-base);
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
 }
@@ -63,10 +70,13 @@ h2{font-size:clamp(1.8rem,3vw,2.4rem);}
 h3{font-size:1.3rem;}
 p{margin:0 0 1em;color:var(--ink-soft);}
 
+/* Base = the Marck Script treatment. When the CMS eyebrow font is Jost or
+   Playfair Display Italic, src/_includes/design-vars.njk emits a full .eyebrow
+   override (case / tracking / style) after this file. */
 .eyebrow{
   font-family:var(--script);
   font-size:calc(1.15rem + 2pt);
-  color:var(--clay);
+  color:var(--accent);
   font-weight:700;
 }
 /* "Creative Developer" hero label — original uppercase sans, not script */
@@ -77,6 +87,17 @@ p{margin:0 0 1em;color:var(--ink-soft);}
   text-transform:uppercase;
   letter-spacing:.18em;
 }
+/* Editorial lead-in — a standout serif treatment, distinct from .eyebrow */
+.leadin-editorial{
+  font-family:var(--serif);
+  font-style:italic;
+  color:var(--accent);
+  font-size:1.2rem;
+  line-height:1.3;
+  margin:0 0 .5em;
+}
+/* compact display heading — portfolio & pricing hero <h1> */
+.h1-compact{font-size:clamp(2.2rem,4vw,3.2rem);}
 
 .btn{
   display:inline-flex;
@@ -92,10 +113,17 @@ p{margin:0 0 1em;color:var(--ink-soft);}
   border-radius:var(--radius);
   transition:all .25s ease;
 }
-.btn-primary{background:var(--teal);color:#fff;}
-.btn-primary:hover{background:var(--teal-deep);border-color:var(--teal-deep);}
-.btn-ghost{background:transparent;color:var(--teal);}
-.btn-ghost:hover{background:var(--teal);color:#fff;}
+/* Primary  — Clay fill, white text; Teal Deep on hover (definition locked, not CMS-editable) */
+.btn-primary{background:var(--clay);border-color:var(--clay);color:#fff;}
+.btn-primary:hover{background:var(--teal-deep);border-color:var(--teal-deep);color:#fff;}
+/* Secondary — Teal Deep outline + text; fills Teal Deep with white text on hover.
+   .btn-ghost kept as an alias so existing markup keeps working. */
+.btn-secondary,.btn-ghost{background:transparent;border-color:var(--teal-deep);color:var(--teal-deep);}
+.btn-secondary:hover,.btn-ghost:hover{background:var(--teal-deep);border-color:var(--teal-deep);color:#fff;}
+/* Tertiary — Teal Deep fill, white text, no visible border; inverts on hover to
+   white fill with a Teal Deep outline + text (definition locked, not CMS-editable) */
+.btn-tertiary{background:var(--teal-deep);border-color:var(--teal-deep);color:#fff;}
+.btn-tertiary:hover{background:#fff;border-color:var(--teal-deep);color:var(--teal-deep);}
 
 /* ---------- header ---------- */
 header{
@@ -221,7 +249,7 @@ section.alt{background:var(--bg);}
 .offer-list li:first-child{padding-top:0;}
 .offer-dot{
   flex-shrink:0;width:6px;height:6px;margin-top:.5em;
-  background:var(--clay);border-radius:50%;
+  background:var(--accent);border-radius:50%;
 }
 .offer-list h4{margin:0 0 4px;font-size:1.05rem;font-family:var(--sans);font-weight:600;color:var(--teal-deep);}
 .offer-list p{margin:0;font-size:.95rem;}
@@ -316,7 +344,7 @@ section#app{
 #app .feature-row li{display:flex;align-items:flex-start;gap:10px;font-size:1.1rem;color:#cfe0dd;}
 #app .feature-row li::before{
   content:"";flex-shrink:0;width:8px;height:8px;margin-top:8px;
-  background:var(--clay);border-radius:50%;
+  background:var(--accent);border-radius:50%;
 }
 #app .app-visual{
   position:relative;

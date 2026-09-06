@@ -1,6 +1,7 @@
 ---
 layout: base.njk
 permalink: "/pricing.html"
+canonical: "/pricing.html"
 title: "Pricing | Design by Cristina"
 description: "Pricing for Design by Cristina: custom Web site design, custom software, and digital solutions for small businesses. Fixed-price packages with hourly support available."
 headExtra: |-
@@ -13,12 +14,11 @@ headExtra: |-
   .service-list li{margin-bottom:.4em;color:var(--ink-soft);}
   </style>
 ---
+{% from "prose-section.njk" import prose %}
+{% set c = copy.pricing %}
 <section class="hero" style="padding:120px 0 60px;">
   <div class="wrap">
-    <p class="eyebrow">Pricing</p>
-    <h1 style="font-size:clamp(2.2rem,4vw,3.2rem);">A starting point for your project</h1>
-    <p class="lede">Every project is different, but you shouldn't have to contact me just to find out whether we're even in the same ballpark.</p>
-    <p class="lede">The pricing below reflects the typical starting investment for the kind of work you see throughout my portfolio. Most projects are completed as fixed-price packages, so you'll know the cost before the work begins.</p>
+    {{ prose(c.hero, level="h1", bodyClass="lede", headingClass="h1-compact") }}
   </div>
 </section>
 <svg class="seam" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0,30 C300,70 900,-10 1200,30 L1200,60 L0,60 Z"/></svg>
@@ -117,20 +117,13 @@ headExtra: |-
 
 <section class="alt">
   <div class="wrap" style="max-width:760px;">
-    <h2>How pricing works</h2>
-    <p>Most new projects begin with a conversation about what you're trying to accomplish, what already exists, and what actually needs to be built.</p>
-    <p>From there, I'll recommend the simplest approach that makes sense and provide a clear project scope and price before the work begins.</p>
-    <p>You won't be pushed into a package full of things you don't need, and you won't have to guess what the project will cost once we're underway.</p>
+    {{ prose(c.howItWorks) }}
   </div>
 </section>
 <svg class="seam" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0,30 C300,70 900,-10 1200,30 L1200,60 L0,60 Z"/></svg>
 
 <section>
   <div class="wrap" style="text-align:center;max-width:600px;">
-    <h2>Have something a little different in mind?</h2>
-    <p>That's often where the most interesting projects start.</p>
-    <p>If you have a Web site, workflow, client experience, software idea, or digital problem you're trying to solve, tell me what you're working on.</p>
-    <p>I can help you figure out what makes sense to build, what doesn't, and the best way to approach it.</p>
-    <a href="/#contact" class="btn btn-primary">Let's talk about your project</a>
+    {{ prose(c.closing) }}
   </div>
 </section>

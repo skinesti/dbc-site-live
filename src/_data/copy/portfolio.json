@@ -1,0 +1,38 @@
+{
+  "hero": {
+    "leadin_style": "Eyebrow",
+    "leadin_text": "Featured Work",
+    "heading": "Creative Developer",
+    "body": "I specialize in turning strategic frameworks into functional digital assets, bringing concepts to life through thoughtful construction, technical setup, and operational coordination, so initiatives are executed smoothly from start to finish.\n\nWith over 18 years of experience in web development, web design, and graphic design, I create digital experiences that balance structure, usability, and visual clarity. I believe in the power of simplicity and the impact of thoughtful design.",
+    "button_text": "",
+    "button_url": "",
+    "button_style": "Primary"
+  },
+  "cases": {
+    "leadin_style": "Eyebrow",
+    "leadin_text": "Spa & Wellness Work",
+    "heading": "Two brands, and a flagship product of my own",
+    "body": "",
+    "button_text": "",
+    "button_url": "",
+    "button_style": "Primary"
+  },
+  "clients": {
+    "leadin_style": "Eyebrow",
+    "leadin_text": "Prior Clients",
+    "heading": "A selection of work over the years",
+    "body": "Projects range from full Web site builds to ongoing updates and refinements, reflecting the breadth of industries supported over more than two decades in web design. Visuals and functionality may have changed since involvement, and some projects are no longer active.",
+    "button_text": "",
+    "button_url": "",
+    "button_style": "Primary"
+  },
+  "closing": {
+    "leadin_style": "None",
+    "leadin_text": "",
+    "heading": "Like what you see?",
+    "body": "Every project on this page started as a conversation about what someone was trying to build. If you've got a Web site, a piece of software, or a digital problem you're working through, tell me about it. I'll help you figure out what actually makes sense, and whether I'm the right person to build it.",
+    "button_text": "Let's talk about your project →",
+    "button_url": "/#contact",
+    "button_style": "Primary"
+  }
+}
