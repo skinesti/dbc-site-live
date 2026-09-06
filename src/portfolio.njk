@@ -1,35 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio | Design by Cristina</title>
-<meta name="description" content="Featured web design and brand work by Cristina Koleszar, creative developer and licensed esthetician.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Playfair+Display:wght@500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<!-- HEADER-START -->
-<!-- AUTO-SYNCED FROM index.html — edit there, not here -->
-<header id="site-header">
-  <nav class="nav">
-    <a class="logo" href="/"><img src="images/dbc-logo-teal.png" alt="Design by Cristina" class="logo-img"></a>
-    <button class="navtoggle" id="navtoggle" aria-label="Open menu">&#9776;</button>
-    <div class="navlinks" id="navlinks">
-      <a href="/">Home</a>
-      <a href="/#app">Clarafide</a>
-      <a href="/#solutions">Solutions</a>
-      <a href="/#about">About</a>
-      <a href="/pricing.html">Pricing</a>
-      <a href="/resources/">Resources</a>
-      <a href="/#contact">Contact</a>
-    </div>
-  </nav>
-</header>
-<!-- HEADER-END -->
-
+---
+layout: base.njk
+permalink: "/portfolio.html"
+title: "Portfolio | Design by Cristina"
+description: "Featured web design and brand work by Cristina Koleszar, creative developer and licensed esthetician."
+---
 <section class="hero" style="padding:120px 0 60px;">
   <div class="wrap">
     <p class="eyebrow">Featured Work</p>
@@ -137,37 +111,3 @@
     <a href="/#contact" class="btn btn-primary">Let's talk about your project &rarr;</a>
   </div>
 </section>
-
-<!-- FOOTER-START -->
-<!-- AUTO-SYNCED FROM index.html — edit there, not here -->
-<footer>
-  <div class="wrap">
-    <a class="logo" href="/"><img src="images/dbc-logo-white.png" alt="Design by Cristina" class="logo-img"></a>
-    <div class="footlinks">
-      <a href="/#app">Clarafide</a>
-      <a href="/#solutions">Solutions</a>
-      <a href="/#services">Services</a>
-      <a href="/pricing.html">Pricing</a>
-      <a href="/portfolio.html">Portfolio</a>
-      <a href="/resources/">Resources</a>
-      <a href="/#contact">Contact</a>
-    </div>
-    <small>&copy; 2026 Design by Cristina. All rights reserved.</small>
-  </div>
-</footer>
-<!-- FOOTER-END -->
-
-<!-- SCRIPT-START -->
-<script>
-  const header = document.getElementById('site-header');
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 8);
-  });
-  const navtoggle = document.getElementById('navtoggle');
-  const navlinks = document.getElementById('navlinks');
-  navtoggle.addEventListener('click', () => navlinks.classList.toggle('open'));
-  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navlinks.classList.remove('open')));
-</script>
-<!-- SCRIPT-END -->
-</body>
-</html>

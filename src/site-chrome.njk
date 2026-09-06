@@ -1,0 +1,23 @@
+---
+permalink: "/partials/site-chrome.html"
+eleventyExcludeFromCollections: true
+---
+{#
+  Cross-repo contract: dbc-resources fetches THIS file at build time
+  (scripts/fetch-header-footer.js) and splices the marker-delimited regions
+  below into its own _includes/base.njk, rewriting root-relative links to
+  absolute https://designbycristina.com URLs.
+
+  The header / footer / script markup is shared with base.njk via the same
+  three includes, so this stays a rendered export, never a second copy to
+  keep in sync. Keep the START/END marker comments exactly as-is.
+#}
+<!-- HEADER-START -->
+{% include "site-header.njk" %}
+<!-- HEADER-END -->
+<!-- FOOTER-START -->
+{% include "site-footer.njk" %}
+<!-- FOOTER-END -->
+<!-- SCRIPT-START -->
+{% include "site-script.njk" %}
+<!-- SCRIPT-END -->

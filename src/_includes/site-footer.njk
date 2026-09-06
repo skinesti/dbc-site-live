@@ -1,0 +1,11 @@
+<footer>
+  <div class="wrap">
+    <a class="logo" href="/"><img src="images/dbc-logo-white.png" alt="Design by Cristina" class="logo-img"></a>
+    <div class="footlinks">
+      {%- for link in site.footLinks %}
+      <a href="{{ link.url }}">{{ link.label }}</a>
+      {%- endfor %}
+    </div>
+    <small>&copy; 2026 Design by Cristina. All rights reserved.</small>
+  </div>
+</footer>

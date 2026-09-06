@@ -1,0 +1,10 @@
+# Netlify build — triggered on every push to `main` (unchanged deploy trigger).
+# The GitHub connection now runs an Eleventy build and publishes _site/ instead
+# of serving the repo root directly.
+
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "20"

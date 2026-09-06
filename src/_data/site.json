@@ -1,0 +1,20 @@
+{
+  "navLinks": [
+    { "label": "Home", "url": "/" },
+    { "label": "Clarafide", "url": "/#app" },
+    { "label": "Solutions", "url": "/#solutions" },
+    { "label": "About", "url": "/#about" },
+    { "label": "Pricing", "url": "/pricing.html" },
+    { "label": "Resources", "url": "/resources/" },
+    { "label": "Contact", "url": "/#contact" }
+  ],
+  "footLinks": [
+    { "label": "Clarafide", "url": "/#app" },
+    { "label": "Solutions", "url": "/#solutions" },
+    { "label": "Services", "url": "/#services" },
+    { "label": "Pricing", "url": "/pricing.html" },
+    { "label": "Portfolio", "url": "/portfolio.html" },
+    { "label": "Resources", "url": "/resources/" },
+    { "label": "Contact", "url": "/#contact" }
+  ]
+}

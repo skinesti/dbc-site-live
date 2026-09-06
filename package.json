@@ -1,0 +1,15 @@
+{
+  "name": "dbc-site-live",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Design by Cristina — marketing site, built with Eleventy",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "build:check": "eleventy --dryrun --quiet",
+    "clean": "rm -rf _site"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

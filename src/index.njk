@@ -1,34 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Design by Cristina | Software &amp; Digital Experiences for Service-Based Businesses</title>
-<meta name="description" content="Design by Cristina: Beautifully designed software and digital experiences for service-based businesses, built with deep roots in aesthetics and wellness by a creative developer with 18+ years of experience.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Playfair+Display:wght@500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<!-- HEADER-START -->
-<header id="site-header">
-  <nav class="nav">
-    <a class="logo" href="/"><img src="images/dbc-logo-teal.png" alt="Design by Cristina" class="logo-img"></a>
-    <button class="navtoggle" id="navtoggle" aria-label="Open menu">&#9776;</button>
-    <div class="navlinks" id="navlinks">
-      <a href="/">Home</a>
-      <a href="/#app">Clarafide</a>
-      <a href="/#solutions">Solutions</a>
-      <a href="/#about">About</a>
-      <a href="/pricing.html">Pricing</a>
-      <a href="/resources/">Resources</a>
-      <a href="/#contact">Contact</a>
-    </div>
-  </nav>
-</header>
-<!-- HEADER-END -->
-
+---
+layout: base.njk
+permalink: "/index.html"
+title: "Design by Cristina | Software & Digital Experiences for Service-Based Businesses"
+description: "Design by Cristina: Beautifully designed software and digital experiences for service-based businesses, built with deep roots in aesthetics and wellness by a creative developer with 18+ years of experience."
+---
 <!-- ============ HERO / INTRODUCTION ============ -->
 <section class="hero" style="padding-top:140px;">
   <div class="hero-photo"><img src="images/hero-portrait.jpg" alt="Woman working calmly on a laptop, hands typing"></div>
@@ -116,6 +91,7 @@
         <li><span class="offer-dot" aria-hidden="true"></span><div><h4>Design Elements</h4><p>Developing or refining logos, color schemes, and visual systems.</p></div></li>
         <li><span class="offer-dot" aria-hidden="true"></span><div><h4>Marketing</h4><p>Strategizing campaigns and keeping brand consistency across every platform.</p></div></li>
       </ul>
+    </div>
   </div>
 </section>
 <svg class="seam flip" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0,30 C300,70 900,-10 1200,30 L1200,60 L0,60 Z"/></svg>
@@ -160,36 +136,3 @@
     </div>
   </div>
 </section>
-
-<!-- FOOTER-START -->
-<footer>
-  <div class="wrap">
-    <a class="logo" href="/"><img src="images/dbc-logo-white.png" alt="Design by Cristina" class="logo-img"></a>
-    <div class="footlinks">
-      <a href="/#app">Clarafide</a>
-      <a href="/#solutions">Solutions</a>
-      <a href="/#services">Services</a>
-      <a href="/pricing.html">Pricing</a>
-      <a href="/portfolio.html">Portfolio</a>
-      <a href="/resources/">Resources</a>
-      <a href="/#contact">Contact</a>
-    </div>
-    <small>&copy; 2026 Design by Cristina. All rights reserved.</small>
-  </div>
-</footer>
-<!-- FOOTER-END -->
-
-<!-- SCRIPT-START -->
-<script>
-  const header = document.getElementById('site-header');
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 8);
-  });
-  const navtoggle = document.getElementById('navtoggle');
-  const navlinks = document.getElementById('navlinks');
-  navtoggle.addEventListener('click', () => navlinks.classList.toggle('open'));
-  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navlinks.classList.remove('open')));
-</script>
-<!-- SCRIPT-END -->
-</body>
-</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Playfair+Display:wght@500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+{%- if headExtra %}
+{{ headExtra | safe }}
+{%- endif %}
+</head>
+<body>
+
+{% include "site-header.njk" %}
+{{ content | safe }}
+
+{% include "site-footer.njk" %}
+{% include "site-script.njk" -%}
+</body>
+</html>
