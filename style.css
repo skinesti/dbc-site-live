@@ -1,7 +1,7 @@
 /* =========================================================
    Design by Cristina — design tokens
    Palette: calm spa-water + warm clay (skincare nod)
-   Type: Playfair Display (display) + Work Sans (body/UI) + Petit Formal Script (eyebrow labels)
+   Type: Playfair Display (display) + Work Sans (body/UI) + Marck Script (eyebrow labels)
    Signature: soft ripple-seam divider between sections,
    echoing "two worlds blended" — water/skin, design/esthetics
    ========================================================= */
@@ -20,11 +20,11 @@
   --gold:      #C9A961;   /* sparing highlight only */
   --line:      #DCE6E3;
 
-  --radius:    4px;        /* corner radius — buttons/CTAs only */
+  --radius:    6px;        /* corner radius — buttons/CTAs only */
 
   --serif: "Playfair Display", Georgia, serif;
   --sans:  "Work Sans", "Helvetica Neue", Arial, sans-serif;
-  --script: "Petit Formal Script", "Snell Roundhand", "Brush Script MT", cursive;
+  --script: "Marck Script", "Segoe Script", "Brush Script MT", cursive;
 
   --maxw: 1120px;
 
@@ -65,9 +65,17 @@ p{margin:0 0 1em;color:var(--ink-soft);}
 
 .eyebrow{
   font-family:var(--script);
-  font-size:1.15rem;
+  font-size:calc(1.15rem + 2pt);
   color:var(--clay);
-  font-weight:400;
+  font-weight:700;
+}
+/* "Creative Developer" hero label — original uppercase sans, not script */
+.eyebrow.eyebrow-plain{
+  font-family:var(--sans);
+  font-size:.84rem;
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:.18em;
 }
 
 .btn{
@@ -105,7 +113,7 @@ header.scrolled{border-color:var(--line);}
 .logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--teal-deep);}
 .logo span{color:var(--clay);}
 .logo-img{height:auto;width:auto;max-height:var(--logo-height);max-width:100%;display:block;}
-.navlinks{display:flex;gap:36px;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;}
+.navlinks{display:flex;gap:24px;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;}
 .navlinks a{color:var(--ink-soft);border-bottom:1px solid transparent;padding-bottom:4px;transition:.25s;}
 .navlinks a:hover{color:var(--teal);border-color:var(--clay);}
 .navtoggle{
@@ -192,28 +200,31 @@ section.alt{background:var(--bg);}
   margin-bottom:16px;
 }
 .card h3{margin-bottom:.5em;}
-.card a.cardlink{
+.card .cardlink{
   display:inline-block;margin-top:1.2em;font-size:.78rem;
   letter-spacing:.1em;text-transform:uppercase;color:var(--teal);
   border-bottom:1px solid var(--clay);padding-bottom:3px;
 }
+.card .cardlink-inactive{
+  color:var(--ink-soft);opacity:.5;
+  border-bottom-color:var(--line);cursor:not-allowed;
+}
 
 /* ---------- brand edit / offer ---------- */
-.offer-grid{
-  list-style:none;margin:0;padding:0;
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:1px;background:var(--line);border:1px solid var(--line);
+.offer{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:start;}
+@media(max-width:860px){.offer{grid-template-columns:1fr;gap:36px;}}
+#services .eyebrow{margin-bottom:.2em;}
+.offer-list{list-style:none;margin:0;padding:0;}
+.offer-list li{
+  display:flex;gap:14px;padding:22px 0;border-bottom:1px solid var(--line);
 }
-@media(max-width:760px){.offer-grid{grid-template-columns:1fr;}}
-.offer-grid li{
-  display:flex;gap:14px;padding:28px 30px;background:var(--surface);
-}
+.offer-list li:first-child{padding-top:0;}
 .offer-dot{
   flex-shrink:0;width:6px;height:6px;margin-top:.5em;
   background:var(--clay);border-radius:50%;
 }
-.offer-grid h4{margin:0 0 4px;font-size:1.05rem;font-family:var(--sans);font-weight:600;color:var(--teal-deep);}
-.offer-grid p{margin:0;font-size:.95rem;}
+.offer-list h4{margin:0 0 4px;font-size:1.05rem;font-family:var(--sans);font-weight:600;color:var(--teal-deep);}
+.offer-list p{margin:0;font-size:.95rem;}
 
 /* ---------- about ---------- */
 .about{max-width:680px;}
@@ -336,7 +347,7 @@ section#app{
 /* ---------- resources: article page ---------- */
 main{padding:70px 0 100px;background:var(--surface);}
 .wrap .article-content{max-width:680px;margin:0 auto;padding:70px 0 100px;}
-article .eyebrow{display:inline-block;margin-bottom:1em;border-bottom:1px solid var(--ink);font-family:var(--sans);text-transform:uppercase;letter-spacing:.18em;font-size:.84rem;}
+article .eyebrow{display:inline-block;margin-bottom:1em;border-bottom:1px solid var(--ink);font-family:var(--sans);text-transform:uppercase;letter-spacing:.18em;font-size:.84rem;font-weight:400;}
 article h1{font-size:clamp(1.8rem,3vw,2.4rem);}
 article .meta{font-size:.85rem;color:var(--sage);margin-bottom:2.4em;}
 .featured-image{max-width:100%;height:auto;display:block;border-radius:4px;margin-bottom:2.4em;}
