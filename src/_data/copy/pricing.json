@@ -1,6 +1,6 @@
 {
   "hero": {
-    "leadin_style": "Eyebrow",
+    "leadin_style": "None",
     "leadin_text": "Pricing",
     "heading": "A starting point for your project",
     "body": "Every project is different, but you shouldn't have to contact me just to find out whether we're even in the same ballpark.\n\nThe pricing below reflects the typical starting investment for the kind of work you see throughout my portfolio. Most projects are completed as fixed-price packages, so you'll know the cost before the work begins.",
@@ -24,6 +24,6 @@
     "body": "That's often where the most interesting projects start.\n\nIf you have a Web site, workflow, client experience, software idea, or digital problem you're trying to solve, tell me what you're working on.\n\nI can help you figure out what makes sense to build, what doesn't, and the best way to approach it.",
     "button_text": "Let's talk about your project",
     "button_url": "/#contact",
-    "button_style": "Primary"
+    "button_style": "Tertiary"
   }
 }
