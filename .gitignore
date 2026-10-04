@@ -9,3 +9,7 @@ node_modules/
 
 # Eleventy build output
 _site/
+
+# Local continuity notes, never publish
+/restart.md
+/backlog.md
