@@ -1,2 +1,6 @@
-/resources/*  https://dbc-resources.netlify.app/resources/:splat  200
-/images/uploads/*  https://dbc-resources.netlify.app/images/uploads/:splat  200
+# Old page addresses from the previous site
+/index.html          /                  301
+/pricing.html        /services/         301
+/pricing             /services/         301
+/portfolio.html      /portfolio/        301
+/resources/sitemap.xml  /sitemap.xml    301

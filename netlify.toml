@@ -1,18 +1,6 @@
-# Netlify build — triggered on every push to `main` (unchanged deploy trigger).
-# The GitHub connection now runs an Eleventy build and publishes _site/ instead
-# of serving the repo root directly.
+# Plain HTML site: there is no build step. Netlify publishes the repo as it is
+# every time main is pushed.
 
 [build]
-  command = "npm run build"
-  publish = "_site"
-
-[build.environment]
-  NODE_VERSION = "20"
-
-# Netlify's "Pretty URLs" post-processing rewrites deployed HTML after the
-# Eleventy build — stripping `.html` from internal links and re-quoting the
-# affected <a> tags. That made the deployed markup (and /partials/site-chrome.html,
-# which dbc-resources fetches) diverge from the committed templates. Turn it off
-# so the templates are authoritative and links stay as authored (/pricing.html).
-[build.processing.html]
-  pretty_urls = false
+  command = "echo 'Static site, no build step'"
+  publish = "."

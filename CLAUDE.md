@@ -1,225 +1,66 @@
-# Design by Cristina — Project Notes
+# Design by Cristina: Project Notes
 
-Marketing site for Design by Cristina: **Eleventy** static-site generator + **Decap CMS**.
-Three pages — home, portfolio, pricing — plus a proxied `/resources/` blog that lives in a
-separate repo (`dbc-resources`). Migrated from hand-written static HTML in Sept 2026
-(Phase 1 = Eleventy conversion; Phase 2 = Decap CMS layer).
+Plain HTML Web site for designbycristina.com. One repo, no build step, no CMS.
+Netlify publishes the repo exactly as it is whenever `main` is pushed.
+`PROJECT-NOTES.md` is the plain-English version for Cristina; this file is the working reference.
 
-`PROJECT-NOTES.md` in this folder is the plain-English version for Cristina; this file is
-the working reference.
-
-## Commands
+## Pages (each is a real file with its full text)
 
 ```
-npm install            # once
-npm run dev             # Eleventy dev server + live reload on :8080
-npm run build           # production build -> _site/
-npm run build:check     # eleventy --dryrun; the pre-commit hook runs this
-npm run cms             # decap-server on :8081 for local CMS editing (see below)
+index.html                              Home
+services/  custom-software/  web-site-design/  digital-solutions/
+clarafide/  shop/  about/  contact/  portfolio/
+resources/index.html                    Resources list (topic filter chips)
+resources/<slug>/index.html             One folder per article
+thanks/index.html                       Contact form success page (noindex)
+_templates/article-template.html        Starting point for a new article (not published, disallowed in robots.txt)
+style.css  site.js                      One shared stylesheet, one small shared script
+fonts/                                  Jonathan Signature subset (see "Open items")
+images/  images/uploads/                Site images; article images live in images/uploads/
+sitemap.xml  robots.txt  _redirects  netlify.toml
+files/                                  Old pricing guide PDF (kept so any old links still work; prices in it are out of date)
 ```
 
-## Layout
+The header, footer and head tags are repeated in every page. A nav or footer change means editing every
+page (use a search and replace across the repo, then check the diff).
 
-```
-eleventy.config.js        input=src/, output=_site/, Nunjucks; passthrough list; `mdp` filter
-netlify.toml              build command + Node version; pretty_urls OFF (see notes)
-style.css                 ROOT — single source of truth for styling; see "style.css" below
-robots.txt, sitemap.xml   ROOT — passthrough-copied verbatim
-_redirects                ROOT — Netlify reads from _site/; /resources/* proxy + /images/uploads/* proxy
-images/, files/           ROOT — passthrough-copied wholesale
-admin/                    Decap CMS — passthrough-copied to /admin/
-tools/gen-cms-config.js   regenerates admin/config.yml (run after editing the section schema)
+## Design rules (agreed, do not drift)
 
-src/
-  index.njk portfolio.njk pricing.njk   the three pages: front matter + body; use the prose() macro
-  site-chrome.njk                        -> /partials/site-chrome.html  (consumed by dbc-resources)
-  design-settings.njk                    -> /admin/design-settings.json (consumed by admin/preview.js)
-  _includes/
-    base.njk               page shell (<head>, header/footer/script includes, canonical, design-vars)
-    site-header.njk site-footer.njk site-script.njk   the shared chrome, ONE copy each
-    prose-section.njk       prose() macro — renders a CMS section (lead-in / heading / body / button)
-    design-vars.njk         turns design.json into a Google-Fonts <link> + a :root override <style>
-  _data/
-    site.json               nav + footer link lists (single source; header ≠ footer by design)
-    design.json             global design settings (CMS: "Site Design Settings")
-    copy/index.json copy/portfolio.json copy/pricing.json   prose sections (CMS: "Page Content")
-```
+- Colors: Whisper Mint #f6faf9, Line Mint #dce6e3, Slate Teal #2f4858, Deep Teal #1b2e37, Coral #dc775e, white.
+  In the CSS: `--mint`, `--line`, `--teal` (Slate Teal), `--ink` (Deep Teal), `--clay` (Coral), `--white`.
+- Fonts: Playfair Display 400/500 for headings, buttons and links; Jost 400 for body; Jonathan Signature for script accents only.
+  No bold, no italic (strong renders at weight 500, em is not italic).
+- Buttons: coral solid with white text (hover white fill, coral border), or Slate Teal solid with white text and an arrow.
+  42px tall, 7px corners, 12rem minimum width. Topic bubbles: white, 1px coral outline, teal text, Playfair 12px.
+- No eyebrows or small labels above headings. Portfolio appears in the footer only. Atlanta stays out of the H1.
+- Prices: custom software $1,500, Web site design $1,000, digital solutions $500, hourly $125. Clarafide: Starter $19, Studio $29, Concierge custom.
+- Copy: "Web site" is always two words with a capital W. Never use em dashes.
 
-Everything at the repo root that the deployed site needs is **passthrough-copied**, not moved —
-`style.css` especially (see below). `_data/` is `copy/` not `content/` because `content` is a
-reserved Eleventy data name.
+## Adding an article
 
-## Shared nav / header / footer
+Articles are written and edited as Google Docs in the DBC Drive, folder "DBC Article Writer [Do Not Delete]"
+(subfolders Drafts, Published, Images; the DBC Article Tracker sheet records every article).
+The Doc is the master copy. To publish:
 
-The header, footer and nav `<script>` live **once** in `src/_includes/site-{header,footer,script}.njk`
-and are `{% include %}`d by `base.njk`. Nav and footer **link lists** are in `src/_data/site.json`
-(`navLinks`, `footLinks`) and looped in the header/footer partials — edit links there.
+1. Copy `_templates/article-template.html` to `resources/<slug>/index.html` and fill in every `{{TOKEN}}`
+   (SLUG, TITLE, DESCRIPTION, IMAGE_FILE, TOPIC, DATE_ISO, DATE_LONG). Put the article body HTML where the comment says.
+2. Put the image in `images/uploads/` (about 1600px wide, JPG or PNG, named after the slug).
+3. Add the article card to `resources/index.html` (newest first) and, if it is one of the two newest, to the "Latest from Resources" block in `index.html`.
+4. Add the URL to `sitemap.xml`.
+5. Add or update the row in the DBC Article Tracker sheet (Status Published, Publish Date, Links To).
+6. Move the Doc from Drafts to Published.
 
-**Header and footer intentionally differ:** footer = the full header set **plus Portfolio**
-(Portfolio is footer-only, never in the header). `navLinks` and `footLinks` are therefore not
-identical arrays — that is correct, not drift. There is no `/#services` link in either.
+To change a published article, edit the Doc, then update that article's HTML to match. Never edit only the HTML.
 
-The old `tools/sync-partials.py` + `HEADER-START`/`FOOTER-START` marker workflow is **gone**.
+## Deploying
 
-### `/partials/site-chrome.html` — cross-repo contract with dbc-resources
+Commit locally with a descriptive message and end it with the Co-Authored-By and Claude-Session trailers.
+Netlify deploys when `main` is pushed. Publishing and pushing need Cristina's explicit approval for that release.
+This session's GitHub connection could not push on the first build (the Claude GitHub App was not installed for this repo).
 
-`src/site-chrome.njk` renders the header + footer + script wrapped in `<!-- HEADER-START -->` /
-`FOOTER` / `SCRIPT` marker comments and publishes them at
-`https://designbycristina.com/partials/site-chrome.html`. The **dbc-resources** repo fetches
-that URL at build time (`scripts/fetch-header-footer.js`), rewrites root-relative links to
-absolute `https://designbycristina.com/…`, and splices it into its own layout. So:
+## Open items
 
-- A nav/footer change here reaches `/resources/` pages only **after** this site deploys AND
-  dbc-resources rebuilds (it must be pushed/redeployed separately).
-- Keep the marker comments in `site-chrome.njk` intact — the fetch script string-scans for them.
-- `/partials/` is `Disallow`ed in `robots.txt` and the file carries no `<meta>`/sitemap entry.
-
-## `style.css`
-
-Stays physically at the repo **root**, edited in place, only passthrough-copied to `_site/`.
-Reason: dbc-resources' build does `curl …/raw.githubusercontent.com/skinesti/dbc-site-live/main/style.css`
-before every deploy — moving the file breaks that. It must also remain a **complete, working
-stylesheet on its own** (dbc-resources gets nothing but the raw file).
-
-Tokens on `:root` are the **defaults**; `design-vars.njk` emits a later `:root` override block
-from `design.json`, so the CMS-selectable ones win at runtime:
-
-| token        | default            | CMS control            |
-|--------------|--------------------|------------------------|
-| `--sans`     | Work Sans stack    | Body font              |
-| `--script`   | Marck Script stack | Eyebrow font           |
-| `--font-base`| `17px`             | Text size (16/17/19)   |
-| `--accent`   | `#C2876F` (clay)   | Accent colour          |
-| `--radius`   | `6px`              | Button radius (4/6/8)  |
-
-`--accent` recolours only the lead-in labels, `.offer-dot`, and `#app .feature-row li::before`.
-Structural `--clay` (borders, link underlines, `.tag`, hovers) is untouched by the accent setting.
-Headings are **always** Playfair Display (locked, not a CMS choice).
-
-### Buttons — `.btn-primary` / `.btn-secondary` / `.btn-tertiary`
-
-Definitions are fixed in `style.css` and documented in `admin/config.yml`; the CMS only picks
-which one per button.
-
-- **Primary** — Clay fill, white text; Teal Deep fill on hover.
-- **Secondary** — Teal Deep outline + text; fills Teal Deep with white text on hover.
-  (`.btn-ghost` is kept as an alias of Secondary so old markup still works.)
-- **Tertiary** — Teal Deep fill, white text, no visible border; inverts on hover to white fill
-  with a Teal Deep outline + text.
-
-### Eyebrow lead-in — font-specific treatment
-
-`design-vars.njk` maps the **Eyebrow font** choice to a complete `.eyebrow` rule (emitted after
-`style.css`, so it wins). `admin/preview.js` mirrors the same map for the CMS preview pane.
-
-- **Marck Script** — script face, natural case, no tracking, weight 700.
-- **Jost** — the site's original label treatment: `text-transform:uppercase` + `.18em`
-  letter-spacing, `.84rem`, weight 500. This is the **one exception** to "no uppercase" for
-  Eyebrow style.
-- **Playfair Display Italic** — serif italic, natural case, no tracking, `1.2rem` — the same
-  visual treatment as the Editorial lead-in (different lead-in category).
-
-Colour is always `--accent` for all three. The "Creative Developer" hero label uses
-`.eyebrow.eyebrow-plain` (Work Sans uppercase, higher specificity) and is deliberately opted
-out of all of the above.
-
-## Content model (Decap "Page Content")
-
-Each page has one JSON file in `src/_data/copy/` with **named** section keys (not an ordered
-list — prose sections are interleaved with hardcoded markup in the templates). Every section
-object has the same 7 fields:
-
-| field         | widget   | notes |
-|---------------|----------|-------|
-| `leadin_style`| select   | `None` / `Eyebrow` / `Editorial` |
-| `leadin_text` | string   | used only when style ≠ None |
-| `heading`     | string   | always Playfair Display |
-| `body`        | markdown | rendered by the `mdp` filter; `\n\n` → paragraphs |
-| `button_text` | string   | empty → no button |
-| `button_url`  | string   | e.g. `/pricing.html`, `/#contact`, full `https://` |
-| `button_style`| select   | `Primary` / `Secondary` / `Tertiary` |
-
-Sections per file: `index.json` → hero, app, solutions, services, about, contact ·
-`portfolio.json` → hero, cases, clients, closing · `pricing.json` → hero, howItWorks, closing.
-
-`prose(section, level="h2", bodyClass="", headingClass="")` in `prose-section.njk` renders
-lead-in → heading → body → optional button. `level="h1"` + `bodyClass="lede"` +
-`headingClass="h1-compact"` are used on the portfolio/pricing heroes.
-
-**Hardcoded, NOT CMS-editable this phase** (a later phase): the Solutions cards, the Brand Edit
-offer-list, the `#app` feature list + phone images + the inline italic "Clarafide" span, the
-portfolio case studies + client list, the pricing `.service` blocks, the contact form, and the
-home hero's second italic tagline line. The home hero and `#app` use inline `{{ copy.… }}`
-field refs (not the macro) because their surrounding markup is bespoke.
-
-**Deliberate visual changes from the pre-CMS site:** Primary/Secondary buttons restyled to
-Clay / Teal-Deep-outline; "Introducing Clarafide" is now `Editorial` (Playfair italic) instead
-of a script eyebrow. Everything else renders byte-for-byte as before at the default settings.
-
-## Site Design Settings (Decap "design" collection)
-
-Single file `src/_data/design.json`, one CMS entry, no preview pane. Fields: `eyebrow_font`,
-`body_font`, `text_size`, `accent_color`, `button_radius` — see the `style.css` table above.
-Applied globally by `design-vars.njk`. `src/design-settings.njk` also publishes the same JSON
-at `/admin/design-settings.json` so `admin/preview.js` can reflect the eyebrow-font choice in
-the Page Content preview (it reads the **saved** value — updates after Save + rebuild).
-
-## Decap CMS (`admin/`)
-
-- **Backend: GitHub OAuth** (`backend: { name: github, repo: skinesti/dbc-site-live, branch: main }`).
-  The OAuth app's callback is `https://api.netlify.com/auth/done`; its client id/secret are set
-  in Netlify → Project configuration → Access & security → OAuth. Editors sign in with their own
-  GitHub account; saving commits straight to `main` and Netlify rebuilds. (Not git-gateway /
-  Netlify Identity.)
-- **`admin/config.yml` is generated** by `tools/gen-cms-config.js`. The 13 per-section field
-  blocks are byte-identical **on purpose**: a YAML anchor for `fields:` makes Decap's entry
-  editor throw *"Failed to load entry: Unknown error"* (the collection list still loads, which
-  makes it look like a data problem — it isn't). Edit the schema in the generator, run
-  `node tools/gen-cms-config.js`, commit both.
-- **`media_folder: "images/cms"`** (with `.gitkeep`). It must **exist** — `decap-server`'s
-  `getMedia` returns HTTP 500 on a missing folder, which also surfaces as "Failed to load
-  entry: Unknown error". Do **not** use `images/uploads` — that path is proxied to dbc-resources
-  by `_redirects`. Only exercised if an image is dropped into a Body field (no image widgets in
-  the schema).
-- **`admin/preview.js`** registers `/style.css` + a little layout CSS, loads the real Playfair
-  italic face, applies the eyebrow-font treatment from `/admin/design-settings.json`, and
-  renders each Page Content collection as composed sections (lead-in / heading / body / button).
-
-### Local CMS testing
-
-```
-npm run cms     # terminal 1 — decap-server :8081
-npm run dev     # terminal 2 — Eleventy   :8080
-```
-
-Open `http://localhost:8080/admin/`, click **Login** — `local_backend: true` connects to
-decap-server with no auth. Saves write straight to the `src/_data/**` JSON files; Eleventy
-rebuilds on the file change. `local_backend` is ignored in production.
-
-## Netlify build & deploy
-
-`netlify.toml`: `command = "npm run build"`, `publish = "_site"`, `NODE_VERSION = "20"`, and
-`[build.processing.html] pretty_urls = false` (Netlify's pretty-URL post-processing was
-rewriting deployed HTML — stripping `.html`, re-quoting attributes — so `/partials/site-chrome.html`
-diverged from the templates; turning it off makes the templates authoritative).
-
-Repo is `skinesti/dbc-site-live` (private). **Deploy: commit locally, then push `main` from a
-real Terminal — not from a Claude Code session.** The push triggers the Netlify build.
-
-`.githooks/pre-commit` runs `npm run build:check` and aborts the commit on a build error.
-Enable per clone once: `git config core.hooksPath .githooks`.
-
-## Canonicals & URLs
-
-Every page sets a self-referential `<link rel="canonical">` via a `canonical:` front-matter var
-(`/`, `/portfolio.html`, `/pricing.html`) — `/pricing` and `/pricing.html` both resolve, this
-consolidates them.
-
-## Working rules
-
-- After any change to deployable content (`src/**`, `style.css`, `admin/**`, `images/`,
-  `robots.txt`, `sitemap.xml`, `netlify.toml`, `eleventy.config.js`), stage and commit locally
-  with a descriptive message. Do not push — Cristina pushes `main` from a Terminal.
-- `CLAUDE.md` / `PROJECT-NOTES.md` are docs, not deployable content.
-- Flag any inconsistency across the three pages rather than silently skipping it.
-- End commit messages with the `Co-Authored-By:` / `Claude-Session:` trailer for the session.
+- The home hero photo is the old stock placeholder (`images/hero.webp`). It is not licensed. Replace it before relying on the site long term.
+- `fonts/jonathan-signature-subset.woff2` only contains the letters used for the About sign-off and the contact thank-you.
+  Replace it with the full licensed font file once it is in Drive.
+- `dbc-resources` (the old articles repo) is retired in practice: the articles now live here. Retire it only with Cristina's approval.

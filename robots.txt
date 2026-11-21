@@ -1,7 +1,6 @@
 User-agent: *
 Allow: /
-Disallow: /partials/
-Disallow: /admin/
+Disallow: /_templates/
+Disallow: /thanks/
 
 Sitemap: https://designbycristina.com/sitemap.xml
-Sitemap: https://designbycristina.com/resources/sitemap.xml
