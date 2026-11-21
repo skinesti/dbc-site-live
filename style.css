@@ -275,3 +275,8 @@ em,i{font-style:normal}
 
 /* article headings: fill the line before wrapping, no forced balanced break */
 .prose h2,.prose h3{text-wrap:pretty}
+.pkgs{display:grid;gap:.75rem;margin:1rem 0 1.5rem}
+.pkg{border:1px solid var(--line);background:var(--white);border-radius:10px;padding:1rem 1.25rem;display:grid;grid-template-columns:1fr auto;gap:.25rem 1rem;align-items:baseline}
+.pkg h3{margin:0}
+.pkg .pp{font-family:var(--serif);font-size:var(--h3);color:var(--ink)}
+.pkg p{grid-column:1/-1;margin:0}
