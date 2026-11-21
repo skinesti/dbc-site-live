@@ -1,6 +1,6 @@
 # Design by Cristina: Project Notes
 
-Plain HTML Web site for designbycristina.com. One repo, no build step, no CMS.
+Plain HTML website for designbycristina.com. One repo, no build step, no CMS.
 Netlify publishes the repo exactly as it is whenever `main` is pushed.
 `PROJECT-NOTES.md` is the plain-English version for Cristina; this file is the working reference.
 
@@ -33,8 +33,8 @@ page (use a search and replace across the repo, then check the diff).
 - Buttons: coral solid with white text (hover white fill, coral border), or Slate Teal solid with white text and an arrow.
   42px tall, 7px corners, 12rem minimum width. Topic bubbles: white, 1px coral outline, teal text, Playfair 12px.
 - No eyebrows or small labels above headings. Portfolio appears in the footer only. Atlanta stays out of the H1.
-- Prices: custom software from $1,500, Web sites: Essentials one page $1,000, Foundation up to 4 pages $1,400, Signature up to 6 $1,600, Complete Brand up to 8 $2,000 (half to start, half at launch); digital solutions and support $100 an hour (most jobs $100 to $300). Raised from $75 on Nov 21, 2026 after a client said it was low. Clarafide: Starter $19, Studio $29, Concierge custom.
-- Copy: "Web site" is always two words with a capital W. Never use em dashes.
+- Prices: custom software from $1,500, Websites: Essentials one page $1,000, Foundation up to 4 pages $1,400, Signature up to 6 $1,600, Complete Brand up to 8 $2,000 (half to start, half at launch); digital solutions and support $100 an hour (most jobs $100 to $300). Raised from $75 on Nov 21, 2026 after a client said it was low. Clarafide: Starter $19, Studio $29, Concierge custom.
+- Copy: "Website" is always two words with a capital W. Never use em dashes.
 
 ## Adding an article
 
