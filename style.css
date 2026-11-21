@@ -242,7 +242,7 @@ em,i{font-style:normal}
 /* articles */
 .article{max-width:780px}
 .article-meta{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem 1.25rem;margin-bottom:1rem;font-size:var(--small)}
-.article-author{margin:-.4rem 0 1rem;font-size:var(--small);font-style:italic;color:var(--teal)}
+.article-author{margin:-.4rem 0 1rem;font-family:var(--serif);font-size:var(--small);font-style:italic;font-weight:400;color:var(--teal)}
 .article h1{font-size:clamp(2rem,1.5rem + 2.4vw,3rem)}
 .article-hero{margin:2rem 0 2.5rem}
 .article-hero img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--line)}
