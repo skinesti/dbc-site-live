@@ -33,7 +33,7 @@ page (use a search and replace across the repo, then check the diff).
 - Buttons: coral solid with white text (hover white fill, coral border), or Slate Teal solid with white text and an arrow.
   42px tall, 7px corners, 12rem minimum width. Topic bubbles: white, 1px coral outline, teal text, Playfair 12px.
 - No eyebrows or small labels above headings. Portfolio appears in the footer only. Atlanta stays out of the H1.
-- Prices: custom software $1,500, Web site design $1,000, digital solutions $500, hourly $125. Clarafide: Starter $19, Studio $29, Concierge custom.
+- Prices: custom software from $1,500, four-page Web site $1,000 (half to start, half at launch), digital solutions and support $75 an hour (most jobs $75 to $225). Based on real invoices: $75 an hour and a $1,000 four-page package. Clarafide: Starter $19, Studio $29, Concierge custom.
 - Copy: "Web site" is always two words with a capital W. Never use em dashes.
 
 ## Adding an article
