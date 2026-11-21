@@ -18,7 +18,7 @@ style.css  site.js                      One shared stylesheet, one small shared 
 fonts/                                  Jonathan Signature subset (see "Open items")
 images/  images/uploads/                Site images; article images live in images/uploads/
 sitemap.xml  robots.txt  _redirects  netlify.toml
-files/                                  Old pricing guide PDF (kept so any old links still work; prices in it are out of date)
+files/                                  Two-page take-away pricing guide PDF (rebuilt Nov 21, 2026; update it whenever prices change)
 ```
 
 The header, footer and head tags are repeated in every page. A nav or footer change means editing every
