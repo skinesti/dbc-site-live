@@ -141,6 +141,8 @@ nav a:hover,nav a[aria-current]{border-color:var(--clay);color:var(--ink)}
 .filters{display:flex;flex-wrap:wrap;gap:.75rem;margin:2rem 0 0}
 .textlink{color:var(--teal)}
 .textlink:hover{color:var(--teal);text-decoration-color:var(--clay);text-decoration-thickness:2px}
+.skin-link{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.0625rem;color:var(--teal);text-decoration:none}
+.skin-link:hover,.skin-link:focus-visible{text-decoration:underline;text-decoration-color:var(--clay);text-decoration-thickness:2px;text-underline-offset:.2em}
 .chip{font:400 1.0625rem/1 var(--serif);padding:.8rem 1.2rem;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;transition:background .15s,border-color .15s,color .15s}
 .chip:hover{border-color:var(--clay)}
 .chip[aria-pressed="true"]{background:var(--clay);border-color:var(--clay);color:#fff}
