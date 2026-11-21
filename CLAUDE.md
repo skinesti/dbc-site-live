@@ -60,7 +60,8 @@ This session's GitHub connection could not push on the first build (the Claude G
 
 ## Open items
 
-- The home hero photo is the old stock placeholder (`images/hero.webp`). It is not licensed. Replace it before relying on the site long term.
-- `fonts/jonathan-signature-subset.woff2` only contains the letters used for the About sign-off and the contact thank-you.
-  Replace it with the full licensed font file once it is in Drive.
+- The home hero photo (`images/hero.webp`) is cleared for use by Cristina (confirmed Nov 21, 2026).
+- Cristina holds the Jonathan Signature license. `fonts/jonathan-signature-subset.woff2` still only contains the letters used for the About sign-off and the contact thank-you.
+  Swap in the full font file once it is in Drive, if the script is used anywhere else.
+- Years of experience are always "eighteen years" (or "18+ years"), never "two decades".
 - `dbc-resources` (the old articles repo) is retired in practice: the articles now live here. Retire it only with Cristina's approval.
