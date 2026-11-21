@@ -29,10 +29,13 @@ page (use a search and replace across the repo, then check the diff).
 - Colors: Whisper Mint #f6faf9, Line Mint #dce6e3, Slate Teal #2f4858, Deep Teal #1b2e37, Coral #dc775e, white.
   In the CSS: `--mint`, `--line`, `--teal` (Slate Teal), `--ink` (Deep Teal), `--clay` (Coral), `--white`.
 - Fonts: Playfair Display 400/500 for headings, buttons and links; Jost 400 for body; Jonathan Signature for script accents only.
-  No bold, no italic (strong renders at weight 500, em is not italic).
+  No bold. No italic, with two exceptions Cristina asked for: the article author line (`.article-author`) and the
+  skincare link (`.skin-link`, no underline until hover), both Playfair Display italic.
 - Buttons: coral solid with white text (hover white fill, coral border), or Slate Teal solid with white text and an arrow.
   42px tall, 7px corners, 12rem minimum width. Topic bubbles: white, 1px coral outline, teal text, Playfair 12px.
 - No eyebrows or small labels above headings. Portfolio appears in the footer only. Atlanta stays out of the H1.
+- Home H1: "Websites and tools that help your business run smoothly." Product shelf cards (Home and Shop) all use `class="card accent"` (coral line on the left).
+- Articles show "Author: Design by Cristina" under the date, and the schema author is the Organization (no personal name, on purpose, for privacy).
 - Prices: custom software from $1,500, Websites: Essentials one page $1,000, Foundation up to 4 pages $1,400, Signature up to 6 $1,600, Complete Brand up to 8 $2,000 (half to start, half at launch); digital solutions and support $100 an hour (most jobs $100 to $300). Raised from $75 on Nov 21, 2026 after a client said it was low. Clarafide: Starter $19, Studio $29, Concierge custom.
 - Copy: "website" is one word, lowercase unless it starts a sentence or heading (changed Nov 21, 2026; it used to be two words, "Web site"). Never use em dashes.
 
@@ -55,8 +58,18 @@ To change a published article, edit the Doc, then update that article's HTML to 
 ## Deploying
 
 Commit locally with a descriptive message and end it with the Co-Authored-By and Claude-Session trailers.
-Netlify deploys when `main` is pushed. Publishing and pushing need Cristina's explicit approval for that release.
-This session's GitHub connection could not push on the first build (the Claude GitHub App was not installed for this repo).
+Netlify deploys when `main` is pushed. Publishing and pushing need Cristina's explicit approval for that release;
+when she says "push" or "just push everything", Claude may run `git push` for that work. Each push costs Netlify build
+credits, so batch changes into one push. Claude Code can push with `git -c push.negotiate=true push origin HEAD:main`.
+
+## Clarafide and the demo
+
+The Clarafide page here is a short overview with one button to the demo (opens in a new tab).
+The demo is its own repo, `skinesti/aquapura-demo` (React + Vite, demo.designbycristina.com), restyled Nov 21, 2026 with this
+palette. Plan: it becomes yourclarafide.com (marketing, demo, pricing, login), with each spa's clients at
+yourclarafide.com/<spa-name>. Terms: users are spas who log in at https://forms.designbycristina.com/login; clients are
+spa customers who never log in. Any data pointing to Clarafide, Aqua Pura or Georgia Sapphire is test data.
+Moving to yourclarafide.com later needs redirects and new login, email and Stripe return URLs.
 
 ## Open items
 
@@ -65,4 +78,6 @@ This session's GitHub connection could not push on the first build (the Claude G
   The full font is in the DBC Drive: Fonts / Jonathan-Signature-Font (JonathanSignature.woff, .otf, .ttf, plus a zip).
   Swap it in only if the script is used on more pages than the About sign-off and thank-you.
 - Years of experience are always "eighteen years" (or "18+ years"), never "two decades".
-- `dbc-resources` (the old articles repo) is retired in practice: the articles now live here. Retire it only with Cristina's approval.
+- `dbc-resources` (the old articles repo) is retired: the articles now live here. Do not push or build there.
+- The brand rules are also in the Drive file "Design by Cristina Branding" (updated Nov 21, 2026 to match this file).
+- Not done and hers to do: rename the Amazon KDP listing to Design by Cristina; follow up with Georgia Sapphire (never implemented Clarafide); the e-books card on Home and Shop should be checked against whether e-books exist.
