@@ -265,11 +265,13 @@ em,i{font-style:normal}
 @media(max-width:860px){.case{grid-template-columns:1fr}.case.rev .frame{order:0}}
 .frame{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--white)}
 .frame img{display:block;width:100%;height:auto}
-.frame-phone{max-width:300px;justify-self:center;padding:1.25rem;background:var(--mint)}
-.frame-phone img{border-radius:12px}
+.frame-phone{max-width:280px;justify-self:center;border:0;border-radius:16px;background:none;overflow:hidden}
 .case h3{margin-bottom:.75rem}
 .clientlist{list-style:none;margin:2.5rem 0 0;padding:0;columns:3 15rem;column-gap:2.5rem}
 .clientlist li{break-inside:avoid;padding:.4rem 0;border-bottom:1px solid var(--line)}
 .closing{max-width:640px;margin:0 auto;text-align:center}
 .closing p{margin-inline:auto}
 .closing .actions{justify-content:center}
+
+/* article headings: fill the line before wrapping, no forced balanced break */
+.prose h2,.prose h3{text-wrap:pretty}
